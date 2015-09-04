@@ -1,0 +1,298 @@
+* {
+    margin:0;
+    padding:0;
+    border:0;
+}
+a,button,input{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+a:link,a:visited,a:active{
+    text-decoration: none;
+}
+a:link{
+    color: #166ba9;
+}
+.left{float:left;}
+/*body {background-image: url("../images/stucco.png");  }*/
+h2{margin: 10px 0;}
+span{color: #6d6d6d;}
+li{
+    word-wrap:break-word;
+    list-style-type: none;
+    list-style-position: inside;
+    font-size: large;
+    margin: 10px 0;
+}
+#heading{
+    word-wrap:break-word;
+    margin: 0 auto;
+    padding: 5px 0 0 0;
+    width: 90%;
+}
+#heading span{
+    text-shadow: 1px 1px 1px black;
+}
+.comes_from{
+    margin: 0 auto;
+    width: 90%;
+}
+.reading{
+    color: #565656;
+    margin: 10px 0 10px 5%;
+    float: left;
+    font-size: 15px;
+}
+.font_style1 li{
+    font-size: 17px;
+}
+.content1{
+    width: 90%;
+    margin: 0 auto;
+    height: 80px;
+}
+.portrait{
+    border: 2px solid gray;
+    border-radius: 50%;
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin: 15px 0 0 0;
+}
+.portrait img{
+    border-radius: 50%;
+    max-height: 100%;
+}
+.person{
+    float: left;
+    width: 70%;
+    margin-right: 10px;
+    padding: 10px 0 0 0;
+}
+.ul01{
+    margin: 0 5px;
+}
+.ul01 li{
+    word-wrap:break-word;
+}
+.commit_person{
+    float: left;
+    width: 50%;
+    height: 40%;
+    margin: 10px 0 0 5%;
+}
+.content2{
+    width: 90%;
+    margin: 10px auto;
+}
+.new_01{
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+.new_02{
+    width: inherit;
+    float: left;
+    font-size: large;
+}
+#images{
+    margin-top: 25px;
+    width: 100%;
+}
+#numbers{
+    margin-left: 20px;
+    height: 25px;
+}
+.table1{
+    float: left;
+    border: 0;
+    width: 60%;
+    height: 15px;
+    font-size: 12px;
+}
+.five_table{
+    text-align: center;
+}
+.five_table table{
+    border-spacing: 5px;
+    width: 100%;
+    height: 40px;
+}
+.five_table td{
+    border-radius: 5px;
+    border: solid 1px black;
+}
+.comment_1{
+    font-size: 15px;
+    margin-left: 5%;
+    padding: 10px 0;
+}
+.comment_details{
+    width: 100%;
+}
+.line{
+    float: left;
+    height: 1px;
+    width: 100%;
+    background-color: darkgray;
+}
+.loading{
+    margin: 10px 0;
+    float: left;
+    width: 100%;
+    text-align: center;
+    color: #166ba9;
+}
+.qr_code{
+    width: 100%;
+    background-image: url("../images/stucco.png");
+    padding: 30px 0;
+}
+.qr_code1{
+    padding-top: 20px;
+    padding-bottom: 10px;
+    width: 100%;
+    background-color: #ffffff;
+    margin: 0 auto;
+}
+.qr_part1{
+    height: 150px;
+    margin: 0 10px 0 3%;
+}
+.qr_part2{
+    margin-top: 20px;
+}
+.qr_1{
+    float: left;
+    height: 150px;
+}
+.qr_2{
+    margin-top: 40px;
+    float: left;
+    width: 40%;
+    white-space: nowrap;
+}
+.mybutton{
+    margin: 5px auto;
+    color: white;
+    text-align:center;
+    border:2px solid #a1a1a1;
+    padding:20px 0;
+    background: #565656;
+    width:70%;
+    border-radius:40px;
+    -moz-border-radius:40px; /* 老的 Firefox */
+}
+.clear{
+    clear: both;
+}
+#comments{
+    width: 100%;
+}
+.new_content{
+    margin: 0 auto;
+    width: 90%;
+}
+.new_picture{
+    padding-top: 10px;
+    float: left;
+    padding-bottom: 10px;
+    width: 15%;
+}
+.new_comment{
+    float: left;
+    width: 85%;
+}
+.new_comment .ul01{
+    margin-left: 15px;
+}
+.portrait1 img{
+    border-radius: 50%;
+    max-width: 100%;
+}
+.new_content1{
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: medium;
+    color: gray;
+    text-align: center;
+}
+.line2{
+    float: left;
+    height: 1px;
+    width: 100%;
+    background-color: darkgray;
+    margin-bottom: 20px;
+}
+.new_picture{
+    padding-top: 15px;
+    float: left;
+    margin-bottom: 5px;
+    width: 15%;
+}
+.new_comment{
+    float: left;
+    width: 85%;
+}
+.new_comment .ul01{
+    margin-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.portrait1 img{
+    border-radius: 50%;
+    max-width: 100%;
+}
+.new_things{
+    background-color: white;
+    margin: 0 auto;
+    width: 95%;
+    border-radius: 5px;
+    border: solid 1px grey;
+
+}
+.new_heading{
+    letter-spacing: 5px;
+    text-align: center;
+    font-size: x-large;
+    color: white;
+    margin: 10px 0;
+    border-bottom-color: grey;
+    border-top-color: grey;
+    background-color: #464646;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.introduction{
+    background-image: url("../images/ydd.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    width: 100%;
+    height: 600px;
+}
+.intr_button{
+    padding-top: 450px;
+}
+.img1{
+    width: 100%;
+}
+.img1 .line{
+    background-color: #f4f4f4;
+}
+footer{
+    color: #ffffff;
+    height: 170px;
+    background-color: #727272;
+}
+footer h1{
+    padding-top: 15px;
+    text-align: center;
+}
+address{
+    margin-left: 30px;
+}
+address p{
+    line-height: 30px;
+}

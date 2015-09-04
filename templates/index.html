@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <script src="js/Chart.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>易丢丢用户分析</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" sizes="192x192" href="images/favicon.ico">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(window).scroll(function () {
+                var $offset = $('.placeholder').offset();
+                if ($(window).scrollTop() > $offset.top) {
+                    $('.nav').css({
+                        'position': 'fixed',
+                        'top': '0px',
+                        'z-index': '999'
+                    });
+                    $(".con").css({"margin-top": "36px"});
+                } else {
+                    $('.nav').removeAttr('style');
+                    $('.con').removeAttr('style');
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+{#<div id="title_bar" align="right">#}
+{#    <a>欢迎你<span style="color: lightskyblue"> <strong>{{ name }}</strong></span> | </a>#}
+{#    <a href="/statistics/logout/">注销</a>#}
+{#</div>#}
+<div class="placeholder"></div>
+<div class="nav">
+    <div class="ul-box">
+
+        <ul class="links">
+            <li>
+                <a>欢迎你<span style="color: lightskyblue"> <strong>{{ name }}</strong></span></a>
+            </li>
+            <li>
+                <a href="/admin/" target="_blank" class="cur">管理页面</a>
+            </li>
+            <li>
+                <a href="/statistics/logout/" target="_blank">注销</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="chart" style="width: 80%">
+    <h1 style="font-size: 32px">开启app次数</h1>
+    <canvas id="openapp_canvas" height="450" width="900"></canvas>
+    <h1 style="font-size: 32px">新增用户人数</h1>
+    <canvas id="newuser_canvas" height="450" width="900"></canvas>
+</div>
+
+
+<script>
+    var openappData = {
+        labels: [{% for day in days %}
+            '{{ day }}',
+        {% endfor %}],
+
+        datasets: [
+            {
+                label: "all records",
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [
+                    {% for record in all_records %}
+                        {{ record}},
+                    {% endfor %}
+                ]
+            }, {
+                label: "regist records",
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [
+                    {% for record in regist_records %}
+                        {{ record}},
+                    {% endfor %}
+                ]
+            }
+        ]
+
+    };
+
+    var newuserData = {
+                labels: [{% for day in days %}
+                    '{{ day }}',
+                {% endfor %}],
+
+                datasets: [
+                    {
+                        label: "new user",
+                        fillColor: "rgba(151,187,205,0.2)",
+                        strokeColor: "rgba(151,187,205,1)",
+                        pointColor: "rgba(151,187,205,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(151,187,205,1)",
+                        data: [
+                            {% for record in user_records %}
+                                {{ record}},
+                            {% endfor %}
+                        ]
+                    }
+                ]
+
+            }
+            ;
+
+    window.onload = function () {
+        var ctx1 = document.getElementById("openapp_canvas").getContext("2d");
+        window.openapp_line = new Chart(ctx1).Line(openappData, {
+            responsive: true,
+            scaleShowLabels: true
+        });
+
+        var ctx2 = document.getElementById("newuser_canvas").getContext("2d");
+
+        window.newuser = new Chart(ctx2).Line(newuserData, {
+            responsive: true,
+            scaleShowLabels: true
+        });
+
+    }
+
+
+</script>
+</body>
+</html>

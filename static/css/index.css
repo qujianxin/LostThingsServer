@@ -1,0 +1,37 @@
+body {
+    background: #eee;
+    color: #000;
+    padding: 0 32px 32px;
+    font: 14px "微软雅黑", Verdana, Arial, Geneva, sans-serif;
+}
+
+
+.ul-box {
+    width: 980px;
+    height: 36px;
+    background: url(../images/nav-bg.png) repeat-x;
+}
+
+ul.links li {
+    float: left;
+}
+
+ul.links li a {
+    display: block;
+    padding: 5px 25px;
+    float: left;
+    height: 26px;
+    color: #fff;
+    font: 14px "微软雅黑", Verdana, Arial, Geneva, sans-serif;
+    line-height: 26px;
+    text-decoration: none;
+}
+
+ul.links li a.cur {
+    background: url(../images/nav-sel-bg.png) repeat-x;
+    color: #333;
+}
+
+ul, li {
+    list-style: none;
+}

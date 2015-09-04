@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>易丢丢用户分析</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" sizes="192x192" href="images/favicon.ico">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div align="center">
+    <div id="Main">
+        <div id="Heading">登录易丢丢用户分析</div>
+        <form method="post" id="login_form">
+            <label for="id_name" class="label-line">用户名:
+                {% if user_not_exist %}
+                    <span style="color: red">用户名不存在</span>
+                {% endif %}
+            </label>
+            <input value="{{ name }}" class="block" id="id_name" maxlength="20" name="name" type="text"/>
+
+            <label for="id_password" class="label-line">密码:
+                {% if wrong_password %}
+                    <span style="color: red">密码错误</span>
+                {% endif %}
+            </label>
+            <input class="block" id="id_password" name="password" type="password"/>
+
+            <div class="block">
+                <input type="submit" class="button" value="登 录">
+            </div>
+        </form>
+    </div>
+</div>
+<script src="js/plugins.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>APP1.0</title>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content=" initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="../static/js/jquery-2.1.3.min.js"></script>
+    <script src="../static/js/mytest.js"></script>
+    <link href="../static/css/css01.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="heading">
+    <h2>
+        {% if what %}
+        <span>〖{{ what }}{{ kind }}〗</span>
+        {% endif %}
+        {{ title }}
+    </h2>
+</div>
+
+<div class="comes_from">
+    <p style="font-size: 13px;color: darkgray">{{ created }}&nbsp;&nbsp;来自：<i style="color: #166ba9" onclick="show_confirm1()">易丢丢</i></p>
+</div>
+<div class="line"></div>
+
+<div class="content1">
+    <div class="portrait">
+        <img src="{{ portrait }}" align="left" alt="头像">
+    </div>
+    <div class="person">
+        <ul class="ul01">
+            <li style="font-size: 20px"><i>{{ commit_person }}</i></li>
+            <li style="font-size: 13px;color: #5a6177">{{ commit_person_location }}</li>
+        </ul>
+    </div>
+</div>
+<div class="clear"></div>
+
+	 {% if time %}
+    <div class="content2">
+           <div class="new_01"><img src="../static/images/clock.png" style="width: 20px"></div>
+           <div class="new_02">{{ time }}</div>
+           <div class="clear"></div>
+    </div>
+
+    <div class="content2">
+           <div class="new_01"><img src="../static/images/map.png" style="width: 20px"></div>
+           <div class="new_02">{{ location }}</div>
+           <div class="clear"></div>
+    </div>
+	  {% endif %}
+
+    <div class="content2">
+           <div class="new_01"><img src="../static/images/binocular.png" style="width: 20px"></div>
+           <div class="new_02">{{ information }}</div>
+           <div class="clear"></div>
+    </div>
+	{% if contact_phone %}
+    <div class="content2">
+           <div class="new_01"><img src="../static/images/telephone.png" style="width: 20px"></div>
+           <div class="new_02">{{ contact_phone }}</div>
+           <div class="clear"></div>
+    </div>
+	{% endif %}
+
+<div id="images">
+    <ul>
+        {% for l in image_list %}
+            <li><img src="{{ l }}" style="max-width: 100%"></li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div id="numbers">
+    <table class="table1">
+        <tr>
+            <td><img src="../static/images/chat.png" style="max-height: 14px"> {{ comments_number }}</td>
+            <td><img src="../static/images/eye40.png" style="max-height: 14px"> {{ reading_number }}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="five_table">
+    <table>
+        <tr>
+            <td onclick="show_confirm()" style="-webkit-tap-highlight-color: rgba(0,0,0,0)">电话</td>
+            <td onclick="show_confirm()" style="-webkit-tap-highlight-color: rgba(0,0,0,0)">短信</td>
+            <td onclick="show_confirm()" style="-webkit-tap-highlight-color: rgba(0,0,0,0)">评论</td>
+            <td onclick="show_confirm()" style="-webkit-tap-highlight-color: rgba(0,0,0,0)">地图</td>
+            <td onclick="show_confirm()" style="-webkit-tap-highlight-color: rgba(0,0,0,0)">分享</td>
+        </tr>
+    </table>
+</div>
+
+<div id="comments">
+    <div class="comment_1">
+        所有评论（{{ comments_number }}条）
+    </div>
+    <hr class="line"/>
+
+    {% for i in comments %}
+        <div class="new_content">
+            <div class="new_picture portrait1">
+                <img src="{{ i.commit_person.portrait.url }}" alt="头像">
+            </div>
+            <div class="new_comment">
+                <ul class="ul01">
+                    <li style="font-size: 15px"><b>{{ i.commit_person.name }}:</b><br/>{{ i.content }}</li>
+                    <li style="font-size: 13px;color: #5a6177">{{ i.created }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="line"/>
+        <div class="clear"></div>
+
+    {% empty %}
+        <div class="new_content1">
+            <b>客官，暂无评论，快来帮助主人吧～</b>
+        </div>
+        <hr class="line"/>
+        <div class="clear"></div>
+    {% endfor %}
+
+    <div id="loading_else" style="display: none">
+        {% for i in comments_else %}
+        <div class="new_content">
+            <div class="new_picture portrait1">
+                <img src="{{ i.commit_person.portrait.url }}" alt="头像">
+            </div>
+            <div class="new_comment">
+                <ul class="ul01">
+                    <li style="font-size: 15px"><b>{{ i.commit_person.name }}:</b><br/>{{ i.content }}</li>
+                    <li style="font-size: 13px;color: #5a6177">{{ i.created }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="line"/>
+        <div class="clear"></div>
+    {% endfor %}
+    </div>
+
+
+    {% if comments_else %}
+        <div class="loading" onclick="list_else()">
+            <p id="pid">查看全部>></p>
+        </div>
+
+    {% else %}
+        <div class="loading" onclick="list_else1()">
+            <p>查看全部>></p>
+        </div>
+    {% endif %}
+
+    <div class="clear"></div>
+</div>
+
+<div class="introduction">
+    <div class="intr_button">
+        <a onclick="show_confirm1()">
+            <div class="mybutton"><strong>Android客户端</strong></div>
+        </a>
+    </div>
+</div>
+
+<div class="img1" >
+    <img src="../static/images/ydd_meitu_7.jpg" style="max-width: 100%">
+    <hr class="line"/>
+    <div class="clear"></div>
+    <img src="../static/images/ydd_meitu_8.jpg" style="max-width: 100%">
+    <hr class="line"/>
+    <div class="clear"></div>
+    <img src="../static/images/ydd_meitu_5.jpg" style="max-width: 100%">
+    <hr class="line"/>
+    <div class="clear"></div>
+    <img src="../static/images/ydd_meitu_9.jpg" style="max-width: 100%">
+    <hr class="line"/>
+    <div class="clear"></div>
+    <img src="../static/images/ydd_meitu_1.jpg" style="max-width: 100%">
+    <hr class="line"/>
+    <div class="clear"></div>
+</div>
+<footer>
+    <h1><i>L&F</i></h1>
+    <address>
+        <p>新浪微博&nbsp;&nbsp;&nbsp;<a href="http://weibo.com/dengchao">wangbingjlu</a></p>
+        <p>联系邮箱&nbsp;&nbsp;&nbsp;<a href="mailto:5455752569@qq.com">wangbing_jlu@qq.com</a></p>
+        <p>QQ交流群&nbsp;&nbsp;&nbsp;582914155</p>
+    </address>
+</footer>
+<div class="reading">阅读&nbsp;{{ reading }}</div>
+<div class="clear"></div>
+</body>
+</html>
